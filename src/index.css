@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Serif+SC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-chinese: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-calligraphy: "STKaiti", "KaiTi", "Kaiti SC", "Songti SC", "Noto Serif SC", serif;
+
+  --color-gold: #c5a059;
+  --color-gold-bright: #e9d5a1;
+  --color-cream: #f4ece1;
+  --color-mist: rgba(244, 236, 225, 0.1);
+  --color-panel: rgba(10, 10, 10, 0.9);
+  --color-accent-glow: rgba(197, 160, 89, 0.6);
+
+  --timeline-safe-bottom: clamp(170px, 18vh, 220px);
+}
+
+@layer base {
+  body {
+    @apply bg-black text-cream overflow-hidden antialiased;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+  }
+}
+
+@layer components {
+  .cinematic-panel {
+    @apply bg-panel backdrop-blur-xl border border-white/15;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.7);
+  }
+  
+  .text-shadow-gold {
+    text-shadow: 0 0 15px rgba(197, 160, 89, 0.6);
+  }
+  
+  .glow-city {
+    box-shadow: 0 0 20px var(--color-gold);
+  }
+
+  .glow-city-active {
+    box-shadow: 0 0 30px var(--color-gold), 0 0 10px var(--color-gold-bright);
+  }
+  
+  .misty-overlay {
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+    pointer-events: none;
+  }
+
+  .poetic-scene-gradient {
+    background: linear-gradient(135deg, rgba(15,15,15,1) 0%, rgba(35,30,20,1) 100%);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 5px;
+  }
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: rgba(197, 160, 89, 0.03);
+    margin-block: 4px;
+    border-left: 1px solid rgba(197, 160, 89, 0.05);
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: rgba(197, 160, 89, 0.25);
+    border-radius: 10px;
+    border: 1px solid rgba(197, 160, 89, 0.1);
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: rgba(197, 160, 89, 0.5);
+  }
+
+  .relief-shadow {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  }
+
+  .text-gold-shadow {
+    text-shadow: 0 0 10px rgba(197, 160, 89, 0.4), 0 0 20px rgba(197, 160, 89, 0.2);
+  }
+
+  .story-panel {
+    position: fixed;
+    right: 40px;
+    top: 140px;
+    bottom: var(--timeline-safe-bottom);
+    width: 600px;
+    max-width: min(600px, 40vw);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    pointer-events: auto;
+    z-index: 55;
+    border-radius: 24px;
+    margin-bottom: 24px;
+  }
+
+  .story-atmosphere-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .story-scroll-root {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    pointer-events: auto;
+  }
+
+  .story-main-content {
+    padding: 42px 48px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .story-scroll-root::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .story-scroll-root::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.03);
+    margin-block: 20px;
+  }
+
+  .story-scroll-root::-webkit-scrollbar-thumb {
+    background: rgba(199,160,75,0.4);
+    border-radius: 999px;
+  }
+}
+
+/* Custom Scrollbar for Story Panel */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 160, 89, 0.3);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 160, 89, 0.6);
+}
+
